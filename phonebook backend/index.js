@@ -60,7 +60,27 @@ app.post('/api/persons', (req, res) => {
     const maxId = persons.length > 0? Math.max(...persons.map(p => p.id)): 0
     const person = req.body
     person.id = maxId +1
-    console.log(person);
+    // console.log(person);
+    // console.log(person.id);
+
+    checkName = (name) => {
+        return persons.find(e => e.name === name)
+    }
+
+    if(!person.name || !person.number){
+        return res.status(400).json(
+            {
+                error: 'missing data'
+            }
+        )
+    }
+
+    if (checkName(person.name)) {
+        return res.status(400).json({ 
+          error: 'name must be unique'
+        })
+      }
+
     persons = persons.concat(person)
     res.json(person)
 })
