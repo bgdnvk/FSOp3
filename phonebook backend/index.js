@@ -4,7 +4,19 @@ const morgan = require('morgan')
 
 const app = express()
 app.use(express.json())
-app.use(morgan('tiny'))
+
+// app.use(morgan('tiny'))
+
+morgan.token('mytoken', (req, res) => {
+  if(req.method === 'POST'){
+    return JSON.stringify(req.body)
+  }
+  return ' '
+})
+
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :mytoken'))
+
+
 
 let persons = [
     { 
@@ -96,6 +108,7 @@ app.post('/api/persons', (req, res) => {
 // })
 
 //morgan impl
+const PORT = 3001
 app.listen(3001, () => {
-  console.log('Morgan tiny log:');
+  console.log(`Server running on port ${PORT}`);
 });
