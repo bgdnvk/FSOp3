@@ -1,0 +1,19 @@
+{
+  "name": "fsop3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./phone-backend/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgdnvk/FSOp3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgdnvk/FSOp3/issues"
+  },
+  "homepage": "https://github.com/bgdnvk/FSOp3#readme"
+}
